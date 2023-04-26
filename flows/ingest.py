@@ -139,7 +139,11 @@ def newstyle_cleaning(file_path):
 
 @task(name='save_to_parquet')
 def save_to_parquet(df, start):
+    print(f'Saving {start} as parquet format...')
     df.to_parquet(f'../data/{start}.parquet', compression='gzip')
+    with open(r'../gcs_dataset_list.txt', 'a') as fp:
+        fp.write("%s\n" % start)
+    print('Done')
 
 
 
@@ -152,7 +156,7 @@ def write_gcs(file):
 
 @flow(name='etl_web_to_local', description='ETL the TfL files')
 def etl_ingest():
-    start = date(2022, 10, 24)
+    start = date(2022, 1, 5) # starting from 2022-01-05
     print(start)
     while start < date(2023, 4, 3):
         dates, end_date = start_end_dates(start)

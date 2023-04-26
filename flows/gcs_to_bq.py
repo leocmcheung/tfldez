@@ -3,14 +3,13 @@ import pandas as pd
 from prefect import flow, task
 from prefect_gcp.cloud_storage import GcsBucket
 from prefect_gcp import GcpCredentials
-from ingest import 
 
 
 @task(retries=3)
-def extract_from_gcs(year: int, month: int, day: int) -> Path:
+def extract_from_gcs(filename) -> Path:
     """Download Tfl data from GCS"""
-    gcs_path = f"data/{color}/{color}_tripdata_{year}-{month:02}.parquet"
-    gcs_block = GcsBucket.load("zoom-gcs")
+    gcs_path = f"{filename}.parquet"
+    gcs_block = GcsBucket.load("tfldez-bucket")
     gcs_block.get_directory(from_path=gcs_path, local_path=f"../data/")
     return Path(f"../data/{gcs_path}")
 
