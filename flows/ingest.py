@@ -66,7 +66,6 @@ def download_file(dataset_id, dates):
 
 @task(name='data_clean')
 def data_clean(filename):
-    print('Cleaning the downloaded file')
     if filename.endswith('.csv'):
         df = pd.read_csv(f'../data/{filename}')
         if len(df.columns) <= 9:
@@ -90,8 +89,10 @@ def old_cleaning(file_path):
     df['StartStation Name'] = df['StartStation Name'].fillna('unknown')
     df['StartStation Name'] = df['StartStation Name'].replace(" ,", ",")
     df['Bike Id'] = df['Bike Id'].fillna(0)
-    df['End Date'] = pd.to_datetime(df['End Date'])
-    df['Start Date'] = pd.to_datetime(df['Start Date'])
+    df['start_hour'] = pd.to_datetime(df['Start Date']).dt.time
+    df['Start Date'] = pd.to_datetime(df['Start Date']).dt.date
+    df['end_hour'] = pd.to_datetime(df['End Date']).dt.time
+    df['End Date'] = pd.to_datetime(df['End Date']).dt.date
     df.rename(columns={
         'Rental Id': 'rental_id',
         'Start Date': 'start_date',
@@ -121,8 +122,10 @@ def newstyle_cleaning(file_path):
     df['Start station'] = df['Start station'].fillna('unknown')
     df['Start station'] = df['Start station'].replace(" ,", ",")
     df['Bike number'] = df['Bike number'].fillna(0)
-    df['End date'] = pd.to_datetime(df['End date'])
-    df['Start date'] = pd.to_datetime(df['Start date'])
+    df['start_hour'] = pd.to_datetime(df['Start date']).dt.time
+    df['Start date'] = pd.to_datetime(df['Start date']).dt.date
+    df['end_hour'] = pd.to_datetime(df['End date']).dt.time
+    df['End date'] = pd.to_datetime(df['End date']).dt.date
     df.rename(columns={
         'Number': 'rental_id',
         'Start date':'start_date',
@@ -160,7 +163,7 @@ def etl_ingest():
     print(start)
     while start < date(2023, 4, 3):
         dates, end_date = start_end_dates(start)
-        print(dates)
+        print(f'Getting dataset with start date {dates}...')
         dataset_id = calc_id(start)
         filename = download_file(dataset_id, dates)
         df = data_clean(filename)
