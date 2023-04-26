@@ -5,3 +5,9 @@ terraform/terraform*
 .DS_Store
 .ipynb_checkpoints/
 __pycache__
+
+# Default .gitignore content added by dbt Cloud
+target/
+dbt_packages/
+logs/
+# end dbt Cloud content

@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: staging
+    database: tfldez
+    schema: tfl_data
+
+    tables:
+      - name: bike_raw
+
+models:
+  - name: stg_bike_data
+    description: All TfL bike trip data
+    columns:
+      - name: rental_id
+        description: Unique identifier for one rental trip
+      - name: bike_id
+        description: Unique identifier for indepenent bikes
+      - name: start_date
+        description: Date and time for the start of a journey
+      - name: startstation_id
+        description: Unique identifier for the bike station at the start of a journey
+      - name: startstation_name
+        description: The official name of the starting bike station
+      - name: end_date
+        description: Date and time at the end of a journey
+      - name: endstation_id
+        description: Unique identifier for the bike station at the end of a journey
+      - name: endstation_name
+        description: The official name of the ending bike station
+      - name: duration
+        description: How long the journey took, basically end_date minus start_date in seconds
+      - name: bike_model
+        description: whether the bike involved was a classic(manual) or an electric bike        
