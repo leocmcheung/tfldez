@@ -9,3 +9,11 @@ models:
         description: Unique identifier for indepenent bikes
       - name: num_count
         description: Number of jounreys a particular bike has made
+
+  - name: fact_bike_model
+    description: Output the most used bikes throughout the record period
+    columns:
+      - name: bike_model
+        description: manual (i.e. classic) or electric bike which deployed in late 2022
+      - name: model_count
+        description: Number of bike trips made in bikes in a particular category
