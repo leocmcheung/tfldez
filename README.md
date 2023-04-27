@@ -134,4 +134,5 @@ dbt build --var 'is_test_run: false'
 ## Initial Data Analysis
 - The number of rental journeys has been rising gradually from 2018 to 2023. There wasn't a significant drop in rental numbers during the COVID lockdown; instead the total duration of bikes being rented reached a maximum of 2.5 billion secconds (694 thousand hours or 79 calendar years) during the month of May 2020.
 - Since the implementation of [500 electric bikes](https://madeby.tfl.gov.uk/2022/11/25/all-about-santander-cycles-e-bikes/) in Sep 2022, electric bike journeys accounted for about 5% of all journeys. There was not a rise in electric bike usage, which is expected as no new electric bikes were introduced since then.
+![](images/look3.png)
 - The overall top 10 locations to start a bike journey are either parks (Hyde Park, Olympic Park) or transport hubs (King's Cross, London Bridge).
