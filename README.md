@@ -47,7 +47,7 @@ To reproduce the project in your working space, please follow the instructions
 1. Fork this repo and clone it to your local machine
 For HTTPS:
 `git clone https://github.com/leocmcheung/tfldez.git`
-FOR SSH:
+For SSH:
 `git clone git@github.com:leocmcheung/tfldez.git`
 
 2. Setup your Google Cloud
@@ -60,7 +60,7 @@ FOR SSH:
   - BigQuery Admin
 - Create a new key for the service account, and download the key as JSON credentials. Store the key in a secure location.
 - Install the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install-sdk)
-- Replace the GCP key location in the following codes and execute the codes in terminal:
+- Replace the GCP key location in the following codes and execute the codes on terminal:
 ```export GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_credentials>.json
 gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
 gcloud auth application-default login
@@ -74,13 +74,30 @@ pyenv virtualenv 3.10.6 tfldez
 pyenv local tfldez
 ```
 
-4. Setup Terraform
+4. Data Infrastructure
 - Follow the [instructions](https://developer.hashicorp.com/terraform/downloads) on the website for your particular operating system and install Terraform.
 - Once installed go to `terraform/` folder and update your GCP project's region and zone (default as europe-west6 Zurich)
-- Run the following codes in terminal to initiate, plan and apply the infrastructure.
+- Run the following codes on terminal to initiate, plan and apply the infrastructure.
 ```bash
 cd terraform/
 terraform init
 terraform plan -var="project=<your-gcp-project-id>"
 terraform apply -var="project=<your-gcp-project-id>"
 ```
+
+5. Data Orchestration
+- Sign up for [Prefect Cloud](https://app.prefect.cloud/auth/login) if you do not have an account
+- Create a new workspace
+- Go to `flows/prefectblocks_init.py` and update your GCP credentials and the GCS bucket name. Remember do not share your GCP credentials on any public repositories!!!
+- Run the following commands on terminal:
+```
+cd flows/
+python prefectblocks_init.py
+```
+- Run the following command to start the flow:
+```prefect agent start -q 'default'
+```
+- Open a new terminal instance and run the data ingestion command. It will start data ingestion from Jan 2018 to Mar 2023. Depending on your internet connection it should take 1-2 hours for all processes to run. For a specific time range please finetune your dates in `ingest.py`
+```python ingest.py```
+
+6. Data
