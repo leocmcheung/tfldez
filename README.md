@@ -120,9 +120,8 @@ cd ..
 dbt build --var 'is_test_run: false'
 ```
 ![](images/dbtlineage.png)
-- Five tables should be created in BigQuery:
+- Four tables should be created in BigQuery:
   - `fact_bike_model`: Querying the journeys based on the type of bikes used
-  - `fact_duration`: Querying the journeys if they were under or above the 30-minute mark (where additional charges apply)
   - `fact_most_bike`: Selecting the most used bikes throughout the period
   - `fact_popular_location`: Filtering the most popular starting stations
   - `stg_bike_data`: the whole collection of transformed data stored in data warehouse
