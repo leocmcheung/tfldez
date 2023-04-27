@@ -119,6 +119,7 @@ OPTIONS (
 cd ..
 dbt build --var 'is_test_run: false'
 ```
+dbt Lineage
 ![](images/dbtlineage.png)
 - Four tables should be created in BigQuery:
   - `fact_bike_model`: Querying the journeys based on the type of bikes used
