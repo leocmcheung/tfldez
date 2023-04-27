@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 ![](images/tflbikes.jpg)
+(image from [getty](https://www.gettyimages.co.uk/detail/news-photo/santander-cycles-are-parked-in-their-docking-station-in-news-photo/478094148))
 
 # TfL Bikes Data Engineering Project
 This is a Data Engineering Project which uses the publicly available [cycling data from Transport for London](https://cycling.data.tfl.gov.uk/).
