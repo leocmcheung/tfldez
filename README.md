@@ -46,9 +46,13 @@ The interactive dashboard can be found [here](https://lookerstudio.google.com/u/
 To reproduce the project in your working space, please follow the instructions
 1. Fork this repo and clone it to your local machine
 For HTTPS:
-`git clone https://github.com/leocmcheung/tfldez.git`
+```
+git clone https://github.com/leocmcheung/tfldez.git
+```
 For SSH:
-`git clone git@github.com:leocmcheung/tfldez.git`
+```
+git clone git@github.com:leocmcheung/tfldez.git
+```
 
 2. Setup your Google Cloud
 - Create a Google account and signup for [Google Cloud Platform](https://console.cloud.google.com/)
