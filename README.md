@@ -23,7 +23,7 @@ The following services are used in this project:
 
 The Data Pipeline Archiecture is as followed: PIC
 
-## Raw Data Description
+## Data Description
 There are two sets of raw data format available on TfL portal. Since the introduction of electric bikes on 12 Sep 2022 the dataset format was also renewed. Please find the following table for reference.
 | Column(after data transformation) | Raw data column (before 12 Sep 2022)| Raw data column (after 12 Sep 2022)| Description |
 |--------|--------|--------|-------------|
@@ -38,3 +38,49 @@ There are two sets of raw data format available on TfL portal. Since the introdu
 | bike_model | <N/A> | Bike model | The type of bike hired (Classic Manual Bike or PBSC Electric Bike)
 | duration | Duration | Total duration (ms) | The total duration of the journey (in minutes after data transformation) |
 | <N/A> | <N/A> | Total duration | The total duration of the jounrey in written form, removed after transformation |
+
+## Dashboard
+The interactive dashboard can be found [here](https://lookerstudio.google.com/u/0/reporting/aa0e9e98-d067-4763-b156-26f495f00bd7)
+
+## Reproducibility
+To reproduce the project in your working space, please follow the instructions
+1. Fork this repo and clone it to your local machine
+For HTTPS:
+`git clone https://github.com/leocmcheung/tfldez.git`
+FOR SSH:
+`git clone git@github.com:leocmcheung/tfldez.git`
+
+2. Setup your Google Cloud
+- Create a Google account and signup for [Google Cloud Platform](https://console.cloud.google.com/)
+- Create a New Project and take note of the project-id
+- Create a Service Account and configure its Identity and Access Management (IAM) policy
+  - Viewer
+  - Storage Admin
+  - Storage Object Admin
+  - BigQuery Admin
+- Create a new key for the service account, and download the key as JSON credentials. Store the key in a secure location.
+- Install the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install-sdk)
+- Replace the GCP key location in the following codes and execute the codes in terminal:
+```export GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_credentials>.json
+gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
+gcloud auth application-default login
+```
+- Close and restart your terminal
+
+3. (Optional) Create a new virtual environment. The following codes are for creating a new virtualenv using pyenv, although other environment applications are available (e.g. Anaconda). In the project directory run:
+```
+pyenv install 3.10.6
+pyenv virtualenv 3.10.6 tfldez
+pyenv local tfldez
+```
+
+4. Setup Terraform
+- Follow the [instructions](https://developer.hashicorp.com/terraform/downloads) on the website for your particular operating system and install Terraform.
+- Once installed go to `terraform/` folder and update your GCP project's region and zone (default as europe-west6 Zurich)
+- Run the following codes in terminal to initiate, plan and apply the infrastructure.
+```bash
+cd terraform/
+terraform init
+terraform plan -var="project=<your-gcp-project-id>"
+terraform apply -var="project=<your-gcp-project-id>"
+```
