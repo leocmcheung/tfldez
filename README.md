@@ -42,6 +42,8 @@ There are two sets of raw data format available on TfL portal. Since the introdu
 
 ## Dashboard
 The interactive dashboard can be found [here](https://lookerstudio.google.com/u/0/reporting/aa0e9e98-d067-4763-b156-26f495f00bd7)
+![](images/look1.png)
+![](images/look2.png)
 
 ## Reproducibility
 To reproduce the project in your working space, please follow the instructions
@@ -134,8 +136,7 @@ dbt Lineage
 
 7. Data Visualisation
 - Create a report on [Google Looker Studio](https://lookerstudio.google.com/), connect BigQuery to the report and select the tables starting with `'fact_ ...` to visualise the data. Have fun!
-![](images/look1.png)
-![](images/look2.png)
+
 
 ## Initial Data Discovery
 - The number of rental journeys has been rising gradually from 2018 to 2023. There wasn't a significant drop in rental numbers during the COVID lockdown; instead the total duration of bikes being rented reached a maximum of 2.5 billion secconds (694 thousand hours or 79 calendar years) during the month of May 2020.
