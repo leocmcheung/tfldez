@@ -98,7 +98,34 @@ python prefectblocks_init.py
 ```
 prefect agent start -q 'default'
 ```
-- Open a new terminal instance and run the data ingestion command. It will start data ingestion from Jan 2018 to Mar 2023. Depending on your internet connection it should take 1-2 hours for all processes to run. For a specific time range please finetune your dates in `ingest.py`
-```python ingest.py```
+- Open a new terminal instance and run the data ingestion command. It will start data ingestion from Jan 2018 to Mar 2023.
+```
+python ingest.py
+```
+![](images/ingest.png)
+- Depending on your internet connection it should take 1-2 hours for all processes to run. For a specific time range please finetune your dates in `ingest.py`
 
-6. Data
+6. Data Transformation and Modelling
+- In Google BigQuery run the following script:
+```
+CREATE OR REPLACE EXTERNAL TABLE tfl_data.bike_raw
+OPTIONS (
+  format = 'parquet',
+  uris = ['gs://tfl_data_lake_tfldez/*.parquet']
+);
+```
+- On terminal run the following commands:
+```
+cd ..
+dbt build --var 'is_test_run: false'
+```
+![](images/dbtlineage.png)
+- Five tables should be created in BigQuery:
+  - `fact_bike_model`: Querying the journeys based on the type of bikes used
+  - `fact_duration`: Querying the journeys if they were under or above the 30-minute mark (where additional charges apply)
+  - `fact_most_bike`: Selecting the most used bikes throughout the period
+  - `fact_popular_location`: Filtering the most popular starting stations
+  - `stg_bike_data`: the whole collection of transformed data stored in data warehouse
+
+7. Data Visualisation
+- Create a report on [Google Looker Studio](https://lookerstudio.google.com/), connect BigQuery to the report and select the tables starting with `'fact_` to visualise the data. Have fun!
