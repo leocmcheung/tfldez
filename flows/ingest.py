@@ -177,7 +177,13 @@ def write_gcs(file):
 
 @flow(name='etl_web_to_local_and_gcs', description='ETL the TfL bike data both locally and to GCS')
 def etl_ingest():
-    start = date(2018, 1, 3) # project collects data starting from 2018-01-03
+    start = date(2020,6,3) # project collects data starting from 2018-01-03
+    # For other start dates please replace date(2018, 1, 3) with
+    # from 2019: date(2019, 1, 2)
+    # from 2020: date(2020, 1, 1)
+    # from 2021: date(2021, 1, 6)
+    # from 2022: date(2022, 1, 5)
+    # from 2023: date(2023, 1, 2)
     print(start)
     while start < date(2023, 3, 31): # the last date of available data is week starting 2023-03-27
         dates, end_date = start_end_dates(start)

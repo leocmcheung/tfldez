@@ -98,12 +98,12 @@ python prefectblocks_init.py
 ```
 prefect agent start -q 'default'
 ```
-- Open a new terminal instance and run the data ingestion command. It will start data ingestion from Jan 2018 to Mar 2023.
+- Open a new terminal instance and run the data ingestion command. It will start data ingestion from Jan 2018 to Mar 2023, creating and uploading 274 weekly parquet files.
 ```
 python ingest.py
 ```
 ![](images/ingest.png)
-- Depending on your internet connection it should take 1-2 hours for all processes to run. For a specific time range please finetune your dates in `ingest.py`
+- Depending on your internet connection it should take about 1 minute to download, process and upload each weekly dataset, thus 3-4 hours for all processes to run. For a shorter time range please finetune your dates in `ingest.py`
 
 6. Data Transformation and Modelling
 - In Google BigQuery run the following script:
@@ -127,4 +127,11 @@ dbt build --var 'is_test_run: false'
   - `stg_bike_data`: the whole collection of transformed data stored in data warehouse
 
 7. Data Visualisation
-- Create a report on [Google Looker Studio](https://lookerstudio.google.com/), connect BigQuery to the report and select the tables starting with `'fact_` to visualise the data. Have fun!
+- Create a report on [Google Looker Studio](https://lookerstudio.google.com/), connect BigQuery to the report and select the tables starting with `'fact_ ...` to visualise the data. Have fun!
+![](images/look1.png)
+![](images/look2.png)
+
+## Initial Data Analysis
+- The number of rental journeys has been rising gradually from 2018 to 2023. There wasn't a significant drop in rental numbers during the COVID lockdown; instead the total duration of bikes being rented reached a maximum of 2.5 billion secconds (694 thousand hours or 79 calendar years) during the month of May 2020.
+- Since the implementation of [500 electric bikes](https://madeby.tfl.gov.uk/2022/11/25/all-about-santander-cycles-e-bikes/) in Sep 2022, electric bike journeys accounted for about 5% of all journeys. There was not a rise in electric bike usage, which is expected as no new electric bikes were introduced since then.
+- The overall top 10 locations to start a bike journey are either parks (Hyde Park, Olympic Park) or transport hubs (King's Cross, London Bridge).
