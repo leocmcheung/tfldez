@@ -6,3 +6,6 @@ terraform/terraform*
 .ipynb_checkpoints/
 __pycache__
 .python-version
+target/
+dbt_packages/
+logs/

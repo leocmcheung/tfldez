@@ -1,0 +1,11 @@
+version: 2
+
+
+models:
+  - name: fact_most_bike
+    description: Output the most used bikes throughout the record period
+    columns:
+      - name: bike_id
+        description: Unique identifier for indepenent bikes
+      - name: num_count
+        description: Number of jounreys a particular bike has made

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ![](images/tflbikes.jpg)
 
 # TfL Bikes Data Engineering Project
