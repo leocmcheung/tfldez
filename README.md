@@ -84,7 +84,7 @@ pyenv local tfldez
 4. Data Infrastructure
 - Follow the [instructions](https://developer.hashicorp.com/terraform/downloads) on the website for your particular operating system and install Terraform.
 - Once installed go to `terraform/` folder and update your GCP project's region and zone (default as europe-west6 Zurich)
-- Run the following codes on terminal to initiate, plan and apply the infrastructure.
+- Update your GCP Project ID in the codes below, and run them on terminal to initiate, plan and apply the infrastructure.
 ```bash
 cd terraform/
 terraform init
