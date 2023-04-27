@@ -21,7 +21,8 @@ The following services are used in this project:
 - dbt - as Data Transformation and Modelling tool
 - Google Looker Studio - as Data Visualisation tool
 
-The Data Pipeline Archiecture is as followed: PIC
+The Data Pipeline Archiecture is as followed:
+![](images/arch.png)
 
 ## Data Description
 There are two sets of raw data format available on TfL portal. Since the introduction of electric bikes on 12 Sep 2022 the dataset format was also renewed. Please find the following table for reference.
@@ -37,7 +38,7 @@ There are two sets of raw data format available on TfL portal. Since the introdu
 | bike_id | Bike Id | Bike number | Unique ID for the bike hired |
 | bike_model | <N/A> | Bike model | The type of bike hired (Classic Manual Bike or PBSC Electric Bike)
 | duration | Duration | Total duration (ms) | The total duration of the journey (in minutes after data transformation) |
-| <N/A> | <N/A> | Total duration | The total duration of the jounrey in written form, removed after transformation |
+| <N/A> | <N/A> | Total duration | The total duration of the jounrey in written form, removed as data is the same as 'duration' |
 
 ## Dashboard
 The interactive dashboard can be found [here](https://lookerstudio.google.com/u/0/reporting/aa0e9e98-d067-4763-b156-26f495f00bd7)
@@ -136,7 +137,7 @@ dbt Lineage
 ![](images/look1.png)
 ![](images/look2.png)
 
-## Initial Data Analysis
+## Initial Data Discovery
 - The number of rental journeys has been rising gradually from 2018 to 2023. There wasn't a significant drop in rental numbers during the COVID lockdown; instead the total duration of bikes being rented reached a maximum of 2.5 billion secconds (694 thousand hours or 79 calendar years) during the month of May 2020.
 - Since the implementation of [500 electric bikes](https://madeby.tfl.gov.uk/2022/11/25/all-about-santander-cycles-e-bikes/) in Sep 2022, electric bike journeys accounted for about 5% of all journeys. There was not a rise in electric bike usage, which is expected as no new electric bikes were introduced since then.
 ![](images/look3.png)

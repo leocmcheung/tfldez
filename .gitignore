@@ -1,5 +1,4 @@
 data/
-data_old/
 terraform/.terraform*
 terraform/terraform*
 .DS_Store
