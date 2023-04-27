@@ -95,7 +95,8 @@ cd flows/
 python prefectblocks_init.py
 ```
 - Run the following command to start the flow:
-```prefect agent start -q 'default'
+```
+prefect agent start -q 'default'
 ```
 - Open a new terminal instance and run the data ingestion command. It will start data ingestion from Jan 2018 to Mar 2023. Depending on your internet connection it should take 1-2 hours for all processes to run. For a specific time range please finetune your dates in `ingest.py`
 ```python ingest.py```
