@@ -25,8 +25,7 @@ The Data Pipeline Archiecture is as followed: PIC
 
 ## Raw Data Description
 There are two sets of raw data format available on TfL portal. Since the introduction of electric bikes on 12 Sep 2022 the dataset format was also renewed. Please find the following table for reference.
-| Column(after | Raw data column | Raw data column | Description |
-| data transformation) | (before 12 Sep 2022) | (after 12 Sep 2022) | |
+| Column(after data transformation) | Raw data column (before 12 Sep 2022)| Raw data column (after 12 Sep 2022)| Description |
 |--------|--------|--------|-------------|
 | rental_id | Rental Id | Number | Unique identifier for each journey |
 | start_date | Start Date | Start date | The date and time for start of journey |
