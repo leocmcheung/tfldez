@@ -47,7 +47,8 @@ The interactive dashboard can be found [here](https://lookerstudio.google.com/u/
 
 ## Reproducibility
 To reproduce the project in your working space, please follow the instructions
-1. Fork this repo and clone it to your local machine
+1. Fork this repo and clone it to your local machine or VM.
+
 For HTTPS:
 ```
 git clone https://github.com/leocmcheung/tfldez.git
