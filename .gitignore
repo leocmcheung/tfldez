@@ -9,3 +9,4 @@ target/
 dbt_packages/
 logs/
 .ipynb
+notebook/
