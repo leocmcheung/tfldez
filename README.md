@@ -108,7 +108,7 @@ prefect agent start -q 'default'
 python ingest.py
 ```
 ![](images/ingest.png)
-- Depending on your internet connection it should take about 1 minute to download, process and upload each weekly dataset, thus 3-4 hours for all processes to run. For a shorter time range please finetune your dates in `ingest.py`
+- Depending on your internet connection it should take about 1 minute to download, process and upload each weekly dataset, thus 2-3 hours for all processes to run. For a shorter time range please finetune your dates in `ingest.py`
 
 6. Data Transformation and Modelling
 - In Google BigQuery run the following script:
