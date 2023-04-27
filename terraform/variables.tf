@@ -34,7 +34,7 @@ variable "stg_dataset" {
 variable "prd_dataset" {
   description = "BigQuery Dataset for storing dbt production models"
   type = string
-  default = "tfl_data_prod"
+  default = "tfl_bike_dwh"
 }
 
 variable "vm_image" {
